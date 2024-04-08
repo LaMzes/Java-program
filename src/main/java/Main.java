@@ -27,7 +27,12 @@ public class Main {
         //TODO validations for valid input of string
         //- Element 1: the Client ID (currently 1 to 5) as first element
         //- Element 2-N: Concatenation of Product ID (1 to 4)=Quantity Ordered (1 to 1 million)
+
+        // Accept order input
+        System.out.println("Enter order (e.g., 1=100,2=200):");
         String orderInput = sc.nextLine();
+
+        // Validate and process order
         processOrder(company, orderInput);
 
     }
@@ -68,7 +73,7 @@ public class Main {
                 additionalDiscount = calculateAdditionalVolumeDiscount(totalAmountAfterBasicDiscount, client.getAbove10000Discount());
             }
 
-            double orderTotal = totalAmountAfterBasicDiscount - additionalDiscount;
+            double orderTotal = calculateOrderTotal(totalAmountAfterBasicDiscount,additionalDiscount);
 
             //TODO Round up properly in methods
             System.out.println("Client: " + client.getName());
